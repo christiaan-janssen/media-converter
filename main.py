@@ -22,6 +22,9 @@ class Main(QtGui.QMainWindow):
 
 		# Connect the radio buttons:
 		QtCore.QObject.connect(self.ui.androidHDRadioButton,QtCore.SIGNAL("toggled(bool)"),self.androidHDSelected)
+		QtCore.QObject.connect(self.ui.androidQHDRadioButton,QtCore.SIGNAL("toggled(bool)"),self.androidQHDSelected)
+		QtCore.QObject.connect(self.ui.appleHDRadioButton,QtCore.SIGNAL("toggled(bool)"),self.appleHDSelected)
+		QtCore.QObject.connect(self.ui.appleFullHDRadioButton,QtCore.SIGNAL("toggled(bool)"),self.appleFullHDSelected)
 
 	def selectFile(self):
 		fileName = QtGui.QFileDialog.getOpenFileName(self, 'Open Media File', expanduser('~'),'Media Files(*.mov *.avi *.mkv *.mpg)')
@@ -29,6 +32,18 @@ class Main(QtGui.QMainWindow):
 
 	def convert(self):
 		self.convertFile()
+
+	def androidHDSelected(self):
+		self.ui.outputFormat.setText("Android HD")
+
+	def androidQHDSelected(self):
+		self.ui.outputFormat.setText("Android QHD")
+
+	def appleHDSelected(self):
+		self.ui.outputFormat.setText("Apple HD")
+
+	def appleFullHDSelected(self):
+		self.ui.outputFormat.setText("Apple Full HD")
 
 def main():
 	app = QtGui.QApplication(sys.argv)
